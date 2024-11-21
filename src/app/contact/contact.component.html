@@ -1,0 +1,125 @@
+<article id="contact" class="">
+  <img ngSrc="Typewriter_cqSoikzedT.avif" fill alt="" />
+
+  <app-std-heading [stdHeading]="'Contact Me'" />
+
+  <form [formGroup]="formContact" class="rounded-9" (ngSubmit)="onSubmit()">
+    <div class="row g-1 align-items-center">
+      <label class="form-label" for="name1">
+        <i class="fa-duotone fa-user prefix pt-2"></i>
+        <span
+          >Name
+          <ng-template>
+            @if (name.invalid && (name.dirty || name.touched)) {
+              <span class="alert alert-danger m-1 p-1">
+                @if (name.errors?.["required"]) {
+                  is required.
+                }
+              </span>
+            }
+          </ng-template>
+        </span>
+      </label>
+      <input
+        class="form-control form-control-sm mt-1"
+        id="name1"
+        type="text"
+        formControlName="name"
+        required
+      />
+    </div>
+    <div class="row g-1 align-items-center pt-1">
+      <label class="form-label border-0 p-1" for="email">
+        <i class="fa-duotone fa-envelope prefix pe-2"></i>
+        Email:
+      </label>
+      <input
+        type="email"
+        id="email"
+        class="form-control form-control-sm p-1"
+        email
+        formControlName="email"
+      />
+
+      @if (email.invalid && (email.dirty || email.touched)) {
+        <span class="alert alert-danger p-1">
+          @if (email.errors?.["required"]) {
+            EMail is required.
+          }
+          else
+          @if (email.errors?.["email"]) {
+            Invalid email format
+          }
+        </span>
+      }
+    </div>
+    <div class="row g-1 align-items-center pt-1">
+      <label class="form-label" for="subject">
+        <i class="fa-duotone fa-tag prefix pe-2"></i>
+        Subject:
+      </label>
+      <input
+        type="text"
+        id="subject"
+        class="form-control form-control-sm"
+        formControlName="subject"
+        required
+      />
+
+      @if (subject.invalid && (subject.dirty || subject.touched)) {
+        <span class="alert alert-danger p-1">
+          @if (subject.errors?.["required"]) {
+            Subject is required.
+          }
+        </span>
+      }
+    </div>
+    <div class="row g-1 align-items-center pt-1">
+      <label class="form-label" for="message">
+        <i class="fa-duotone fa-pencil-alt prefix pe-2"></i>
+        <span>Message:</span>
+      </label>
+      <textarea
+        class="form-control form-control-sm"
+        cols="70"
+        formControlName="message"
+        id="message"
+        rows="8"
+        [maxLength]="maxLength"
+        required
+      >
+      </textarea>
+      <div class="form-helper px-3">
+        <div class="form-counter bg-light">
+          {{ characterCount }} / {{ maxLength }}
+        </div>
+      </div>
+      <ng-template>
+        @if (message.invalid && (message.dirty || message.touched)) {
+          <span class="alert alert-danger p-1 pb-0">
+            @if (message.errors?.["required"]) {
+              Message is required.
+            }
+            else
+            @if (message.errors?.["minlength"]) {
+              Message must be at least 10 characters long.
+            }
+            else
+            @if (message.errors?.["maxlength"]) {
+              Message cannot be more than {{ maxLength }} characters long.
+            }
+          </span>
+        }
+      </ng-template>
+    </div>
+    <div class="card-footer text-center pt-3">
+      <button
+        type="submit"
+        class="btn btn-primary btn-lg"
+        [disabled]="formContact.invalid || formContact.untouched"
+      >
+        Submit
+      </button>
+    </div>
+  </form>
+</article>

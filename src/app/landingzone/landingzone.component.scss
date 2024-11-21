@@ -1,0 +1,28 @@
+/* @use "../styles"; */
+
+/*
+:host {
+    height: 0;
+    overflow-y: scroll;
+    background-color: red;
+    outline: lawngreen solid 3px;
+    scroll-snap-type: y mandatory;
+} */
+p {
+  font-weight: 700;
+}
+
+.fit-content {
+  --fa-primary-color: red;
+  --fa-secondary-color: transparent;
+  position: fixed;
+
+  width: clamp(1rem, 2rem, 3rem) !important;
+  height: clamp(1rem, 2rem, 3rem) !important;
+  border-radius: 20px;
+}
+
+.fit-content-bot {
+  right: 2rem;
+  bottom: 2rem;
+}

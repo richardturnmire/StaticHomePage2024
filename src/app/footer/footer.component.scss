@@ -1,0 +1,49 @@
+@use "mymixins" as styles;
+
+/* #footer {
+  position: relative;
+  container-type: inline-size;
+
+} */
+
+.card {
+  grid-row: -4 / span 2;
+
+  grid-column: 5 / span 4;
+
+  align-self: center;
+  height: fit-content;
+  border-radius: var(--my-border-radius);
+  outline: thin solid blue;
+
+  .card-body {
+    display: flex;
+
+    place-content: space-evenly;
+  }
+
+  .card-footer {
+    text-wrap: nowrap;
+  }
+}
+
+.raised {
+  @include styles.elevation(3);
+}
+
+.with-border {
+  background-color: transparent;
+  border: 1px solid transparent;
+  border-radius: var(--my-border-radius);
+  outline: thin solid blue;
+}
+
+.fa-envelope {
+  --fa-primary-color: var(--my-orange-accent-100);
+  --fa-secondary-color: black;
+}
+
+.github-alt {
+  color: black;
+  clip-path: fill-box;
+}

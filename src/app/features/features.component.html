@@ -1,0 +1,43 @@
+<article id="features">
+  <app-std-heading [stdHeading]="'Features'"></app-std-heading>
+
+  <div class="placeme card-group">
+    @for (feat of features$ | async; track feat) {
+      <div class="col">
+        <div class="card h-100">
+          <div class="card-header">
+            <span
+              class="py-auto px-0 text-nowrap text-start text-white h4-responsive"
+              >{{ feat.name }}</span
+            >
+          </div>
+          <div class="card-body">
+            <span class="card-text h5-responsive px-1">{{
+              feat.description
+            }}</span>
+          </div>
+          <div
+            class="card-footer justify-content-evenly align-content-center p-2"
+          >
+            <a
+              [title]="'link to ' + feat.name + ' docs'"
+              [href]="feat.docsUrl"
+              class="doc-link"
+            >
+              <i class="fa-duotone fa-book-open fa-lg"></i>
+            </a>
+            @if (feat.version) {
+              <div
+                class="version badge rounded-pill bg-light text-dark float-end"
+              >
+                {{ feat.version }}
+              </div>
+            }
+          </div>
+        </div>
+      </div>
+    } @empty {
+      No Features
+    }
+  </div>
+</article>

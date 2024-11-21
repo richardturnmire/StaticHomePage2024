@@ -1,0 +1,131 @@
+:root {
+  --font-family-base: roboto-flex, system-ui;
+  --font-family-base-line-height: 1.6;
+  --font-family-heading: roboto-flex, system-ui;
+  --font-family-heading-line-height: 1.1;
+  --font-family-code: monospace;
+  --body-max-width: 75ch;
+}
+
+/* 000000000 */
+
+@layer mine {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    text-size-adjust: none;
+
+    font-family: var(--font-family-base);
+    color-scheme: light dark;
+    interpolate-size: allow-keywords;
+  }
+
+  body {
+    min-height: 100vh;
+    margin: 0;
+    line-height: var(--font-family-base-line-height);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  button,
+  input,
+  label {
+    line-height: var(--font-family-heading-line-height);
+  }
+
+  input,
+  button,
+  textarea,
+  select {
+    font-family: inherit;
+    font-size: inherit;
+  }
+
+  textarea:not([rows]) {
+    min-height: 10em;
+  }
+
+  :is(ul, ol)[class] {
+    padding: 0;
+    margin: 0;
+    list-style: "";
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-family-heading) system-ui;
+    text-wrap: balance;
+  }
+
+  p,
+  li,
+  figcaption {
+    max-width: var(--body-max-width);
+    text-wrap: pretty;
+  }
+
+  code {
+    font-family: var(--font-family-code) system-ui;
+  }
+
+  :first-child {
+    margin-block-start: 0;
+  }
+
+  i {
+    margin-top: calc(1ex - 1cap);
+    vertical-align: middle;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  p,
+  figure,
+  blockquote,
+  dl,
+  dd {
+    margin-block-end: 0;
+  }
+
+  img,
+  picture {
+    display: block;
+    max-width: 100%;
+  }
+
+  td,
+  math,
+  time[datetime*=":"] {
+    font-variant-numeric: tabular-nums lining-nums;
+  }
+
+  table {
+    border-collapse: collapse;
+  }
+
+  :target {
+    scroll-margin-block: 32px;
+    scroll-margin-block: 5rlh;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+}
+
+/*
+* {
+  overscroll-behavior: contain;
+} */

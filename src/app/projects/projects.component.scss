@@ -1,0 +1,78 @@
+@use "../styles";
+
+:host {
+  --row-start: 2;
+  --row-start2: 5;
+}
+
+article {
+  gap: 0;
+
+  // place-content: center;
+  // place-items: center;
+  justify-content: center;
+}
+
+.project-grid {
+  grid-row: 2 / -4;
+  grid-column: 2 / -2;
+
+  display: grid;
+  grid-template-columns: subgrid;
+  grid-template-rows: subgrid;
+  grid-auto-flow: column;
+  gap: 3rem;
+  place-content: space-evenly;
+  outline: black 2px solid;
+}
+
+:is(.page-area-1, .page-area-2, .page-area-3, .page-area-4) {
+  position: relative;
+  display: grid;
+
+  // min-height: fit-content;
+  outline: 2px red solid;
+  container-type: inline-size;
+  grid-auto-flow: column;
+}
+
+.page-area-1 {
+  grid-row: span 3;
+  grid-column: span 3;
+}
+
+.page-area-2 {
+  grid-row: 1 / -1;
+  grid-column: span 4;
+}
+
+.page-area-3 {
+  grid-row: 1 / -1;
+  grid-column: span 3;
+}
+
+.page-area-4 {
+  grid-row: span 2;
+  grid-column: span 3;
+
+  .btn-group-vertical {
+    width: 50cqi;
+    gap: 4rem;
+    place-content: start;
+    .btn {
+      grid-column: span 4;
+      max-height: fit-content;
+    }
+  }
+}
+
+.list-group {
+  width: 100cqi;
+  min-height: 30dvh;
+
+  // max-height: 30dvh;
+  overflow-y: auto;
+
+  // border-radius: var(--my-border-radius);
+  overscroll-behavior: contain;
+}

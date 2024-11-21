@@ -1,0 +1,73 @@
+@for (prj of projects(); track prj.projectId) {
+  <article [id]="'project' + prj.projectId" [ngStyle]="getBg1(prj)" class="">
+    <app-std-heading [stdHeading]="prj"></app-std-heading>
+    <div class="inner-grid">
+      <div class="page-area-1">
+        <figure class="figure">
+          <!--suppress RequiredAttributes -->
+          @if (prj.image) {
+            <img
+              placeholder
+              fill
+              class="figure-img img-fluid rounded-end me-auto"
+              ngSrc="{{ prj.image }}"
+              alt="{{ prj.toolTip }} sample image"
+            />
+          }
+          <!-- <figcaption class="figure-caption text-start">
+               <div class="d-grid gap-2"
+                    role="group" aria-label="links related to this project">
+                   @for (btn of prj.buttons; track $index) {
+                       <a class="btn btn-info font-weight-bold text-black"
+                          [attr.href]="btn.buttonLink"
+                          target="_blank"
+                          rel="noopener noreferrer">
+                           {{ btn.buttonText }}
+                       </a>
+                   }
+               </div>
+           </figcaption>-->
+        </figure>
+      </div>
+
+      <div class="page-area-4 outer-area">
+        <div
+          class="btn-group-vertical inner-area"
+          role="group"
+          aria-label="links related to this project"
+        >
+          @for (btn of prj.buttons; track $index) {
+            <a
+              class="btn btn-info font-weight-bold glow-on-hover"
+              [attr.href]="btn.buttonLink"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {{ btn.buttonText }}
+            </a>
+          }
+        </div>
+      </div>
+
+      <div class="page-area-2 outer-area">
+        <ul class="list-group list-group-small inner-area">
+          @for (desc of prj.projectDescription; track desc.projectText) {
+            <li class="list-group-item px-1 w-100 text-dark">
+              {{ desc.projectText }}
+            </li>
+          }
+        </ul>
+      </div>
+
+      <div class="page-area-3 outer-area">
+        <ul class="list-group list-group-small inner-area">
+          @for (skill of prj.resources; track skill) {
+            <li class="list-group-item px-1 w-100 text-dark">
+              {{ skill }}
+            </li>
+          }
+        </ul>
+      </div>
+    </div>
+  </article>
+}

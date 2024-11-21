@@ -1,0 +1,46 @@
+@for (job of jobs(); track job.companyId) {
+  <article [id]="'job' + job.companyId" [style.background-color]="getBg1(job)">
+    <app-std-heading [stdHeading]="job"></app-std-heading>
+
+    <div class="inner-grid">
+      <ng-container *ngIf="job.image">
+        <figure class="image">
+          <img
+            ngSrc="{{ job.image }}"
+            fill
+            alt="{{ job.toolTip }} logo"
+            class="rounded-9"
+          />
+        </figure>
+      </ng-container>
+
+      <div class="title" [style.background-color]="getBg2(job)">
+        <ng-container>
+          @for (pos of job.positions; track pos.title) {
+            <div class="g-rid-1">{{ pos.title }}</div>
+            <div class="g-rid-2">{{ pos.startDate }} – {{ pos.endDate }}</div>
+          }
+        </ng-container>
+      </div>
+      <div class="info">
+        <ul class="list-group" [style.background-color]="getBg2(job)">
+          @for (el of job.companyInfo; track $index) {
+            <li class="list-group-item">
+              {{ el.ciLine }}
+            </li>
+          }
+        </ul>
+      </div>
+
+      <div class="tasks">
+        <ul class="list-group" [style.background-color]="getBg2(job)">
+          @for (el of job.jobTasks; track $index) {
+            <li class="list-group-item">
+              {{ el.jobTask }}
+            </li>
+          }
+        </ul>
+      </div>
+    </div>
+  </article>
+}

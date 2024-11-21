@@ -1,0 +1,35 @@
+<app-home />
+<app-skills />
+
+@defer (on viewport; prefetch on idle) {
+  <app-jobs />
+} @placeholder {
+  <article>No article available</article>
+}
+
+@defer (on viewport; prefetch on idle) {
+  <app-projects />
+} @placeholder {
+  <article></article>
+}
+
+<!--@defer (on viewport; prefetch on idle; on timer(5s)) {
+    <app-education/>
+} @placeholder {
+    <p></p>
+}
+
+@defer (on viewport; prefetch on idle; on timer(10s)) {
+    <app-bootcamp/>
+} @placeholder {
+    <p></p>
+}-->
+
+@defer (on viewport; prefetch on idle; on timer(15s)) {
+  <app-footer />
+} @placeholder {
+  <p></p>
+}
+<ngx-scrolltop class="fit-content fit-content-bot" mode="smart">
+  <i class="fa-duotone fa-arrow-alt-circle-up fa-4x"></i>
+</ngx-scrolltop>

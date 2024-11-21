@@ -1,0 +1,20 @@
+<article id="home" class="article-grid">
+  <img ngSrc="Louvre_GWxJARHYl.avif" fill priority alt="" />
+
+  <p class="h2 font-weight-bold text-dark glass" id="welcome">
+    Hello and welcome to my website.
+  </p>
+
+  <div class="quote-wrapper me-5">
+    @for (el of quotes(); track el.a) {
+      <div
+        id="hoyaquote"
+        class="blockquote mb-8 mt-auto text-end"
+        mdbTooltip="Today's Quote"
+      >
+        <p class="h4 glass text-start">{{ el.q }}</p>
+        <cite class="h5 mt-3 text-end">{{ el.a }}</cite>
+      </div>
+    }
+  </div>
+</article>

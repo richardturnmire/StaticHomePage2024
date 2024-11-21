@@ -1,0 +1,61 @@
+// @use "mdb-angular-ui-kit/assets/scss/mdb" as mdb;
+
+form {
+  grid-row: 2 / -2;
+  grid-column: 4 / -4;
+  justify-self: center;
+  width: 30rem;
+  background-color: var(--my-blue-100) !important;
+
+  padding-inline: 1em;
+  padding-block-start: 1em;
+}
+
+.form-label {
+  background-color: aliceblue;
+
+  // border: none;
+}
+
+.form-helper {
+  display: flex;
+  place-content: flex-end;
+}
+
+.form-counter {
+  width: fit-content;
+  font-size: small;
+  font-weight: 700;
+  color: black;
+  background-color: #fbfbfb;
+  padding-inline: 1em;
+}
+
+/* .card-body {
+
+    border-radius: var(--my-border-radius);
+} */
+
+input,
+textarea {
+  background-color: var(--my-gray-50) !important;
+
+  //  border-radius: var(--my-border-radius);
+}
+
+textarea {
+  min-height: 2lh;
+  max-height: 10lh;
+}
+
+@supports (field-sizing: content) {
+  textarea {
+    field-sizing: content;
+  }
+}
+
+/*
+#contact {
+    @include styles.cover();
+    background: linear-gradient(to right, #00b4db, #0083b0);
+} */

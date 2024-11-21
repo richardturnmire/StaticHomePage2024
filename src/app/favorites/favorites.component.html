@@ -1,0 +1,44 @@
+<article class="" id="favorites">
+  <app-std-heading [stdHeading]="'Favorites'"></app-std-heading>
+
+  <mdb-tabs [fill]="true" [vertical]="true" class="my-container">
+    @for (fav of favorites(); track fav.id; let isFirst = $first) {
+      <mdb-tab
+        [ngClass]="{ 'show active': isFirst }"
+        class="border-1 rounded-9"
+      >
+        <ng-template mdbTabTitle>
+          <span style="getBg1(fav)">{{ fav.title }}</span>
+        </ng-template>
+        <div class="card p-3 rounded-9 bg-primary mt-2">
+          <div class="card-header mb-2 rounded-9" [style]="getBg1(fav)">
+            <div
+              class="h3 card-title text-nowrap text-white font-weight-bolder text-center"
+            >
+              {{ fav.title }}
+            </div>
+          </div>
+          <div class="card-body pb-2 rounded-9" [style]="getBg2(fav)">
+            <ul class="bg-transparent list-unstyled rounded-9">
+              @for (lnk of fav.links; track lnk.link) {
+                <li class="w-100">
+                  <a
+                    href="{{ lnk.link }}"
+                    title="'link to ' +  lnk.linkDesc"
+                    class="text-dark has-parent ps-auto"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
+                    {{ lnk.linkDesc }}
+                  </a>
+                </li>
+              }
+            </ul>
+          </div>
+          <div class="card-footer"></div>
+        </div>
+        <!--  </ng-template> -->
+      </mdb-tab>
+    }
+  </mdb-tabs>
+</article>

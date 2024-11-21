@@ -1,0 +1,134 @@
+@let skillSet = skills();
+<article id="mainskill">
+  <app-std-heading [stdHeading]="'Mainframe Skills'"></app-std-heading>
+  <div class="inner-grid">
+    <div class="main-grid-area1">
+      <div class="outer-area">
+        <ul class="inner-area">
+          @for (skill of skillSet; track skill.skillTitle) {
+            @if (skill.area === 4) {
+              <li class="main-grid-item">
+                {{ skill.skillTitle }}
+              </li>
+            }
+          }
+        </ul>
+      </div>
+    </div>
+
+    <div class="main-grid-area2">
+      <div class="outer-area">
+        <div class="inner-area">
+          <img
+            [ngSrc]="'dinosaurs_TKJIL98a7_.avif'"
+            fill
+            priority
+            ngSrcset="30w, 200w"
+            sizes="30vw"
+            alt=""
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+<article id="devskill">
+  <img
+    ngSrc="black-and-gray-laptop-computer-turned-on-doing-computer-1181271_MxZ4maCME.avif"
+    alt=""
+    fill
+  />
+  <app-std-heading
+    [stdHeading]="'Software Development Skills'"
+  ></app-std-heading>
+  <div class="inner-grid">
+    <div class="dev-grid-area1">
+      <div class="outer-area">
+        <ul class="inner-area">
+          @for (skill of skillSet; track skill.skillTitle) {
+            @if (skill.area === 1) {
+              <li class="dev-grid-item1 ms-1 me-2">
+                <!--  <svg class="icon"><use href="#rating2"></use></svg>-->
+                {{ skill.skillTitle }}
+              </li>
+            }
+          } @empty {
+            <p>No skills</p>
+          }
+        </ul>
+      </div>
+    </div>
+
+    <div class="dev-grid-area2">
+      <div class="outer-area">
+        <ul class="inner-area">
+          @for (skill of skills(); track skill.skillTitle) {
+            @if (skill.area === 2) {
+              <li class="dev-grid-item2">
+                {{ skill.skillTitle }}
+              </li>
+            }
+          } @empty {
+            <p>No skills</p>
+          }
+        </ul>
+      </div>
+    </div>
+
+    <div class="dev-grid-area3">
+      <div class="outer-area">
+        <ul class="inner-area">
+          @for (skill of skills(); track skill.skillTitle) {
+            @if (skill.area === 3) {
+              <li class="dev-grid-item3">
+                {{ skill.skillTitle }}
+              </li>
+            }
+          } @empty {
+            <p>No skills</p>
+          }
+        </ul>
+      </div>
+    </div>
+  </div>
+</article>
+
+<article id="softskill">
+  <img
+    ngSrc="photo-of-people-standing-near-white-wall-3184649_I7_biAc5-.avif"
+    fill
+    alt=""
+  />
+
+  <app-std-heading [stdHeading]="'Soft Skills'"></app-std-heading>
+  <div class="inner-grid">
+    <div class="soft-grid-area1">
+      <div class="outer-area">
+        <ul class="inner-area">
+          @for (skill of skills(); track skill.skillTitle) {
+            @if (skill.area === 5) {
+              <li class="soft-grid-item">
+                {{ skill.skillTitle }}
+              </li>
+            }
+          }
+        </ul>
+      </div>
+    </div>
+
+    <div class="soft-grid-area2">
+      <div class="outer-area">
+        <ul class="inner-area">
+          @for (skill of skills(); track skill.skillTitle) {
+            @if (skill.area === 6) {
+              <li class="soft-grid-item2">
+                {{ skill.skillTitle }}
+              </li>
+            }
+          }
+        </ul>
+      </div>
+    </div>
+  </div>
+</article>

@@ -1,0 +1,76 @@
+mdb-sidenav-layout {
+  container-type: inline-size;
+  contain: paint;
+}
+
+/* header {
+  width: 100svi;
+  height: 100svb;
+} */
+
+img.figure-img {
+  object-fit: cover;
+  width: 100cqi;
+}
+
+.navbar {
+  height: var(--my-header-height) !important;
+  box-shadow: none !important;
+}
+
+button {
+  border: 0.125em solid white;
+}
+
+#side-container {
+  overflow-y: clip;
+}
+
+.card {
+  --card-size: 200px;
+  width: var(--card-size);
+  height: var(--card-size);
+  container-type: inline-size;
+}
+
+.fa-duotone {
+  --fa-primary-color: red;
+  --fa-secondary-color: black;
+  font-weight: 700;
+}
+
+:is(.fa-bars) {
+  --fa-primary-color: white;
+  --fa-secondary-color: white;
+}
+
+#welcome {
+  position: absolute;
+  top: 3rem;
+  left: 20vw;
+}
+
+.sidenav-menu {
+  font-weight: 700;
+  background-color: whitesmoke;
+
+  .sidenav-item {
+    font-weight: 700;
+    background-color: gainsboro;
+  }
+}
+
+.fit-content {
+  --fa-primary-color: red;
+  --fa-secondary-color: transparent;
+  position: fixed;
+
+  width: clamp(1rem, 2rem, 3rem) !important;
+  height: clamp(1rem, 2rem, 3rem) !important;
+  border-radius: 20px;
+}
+
+.fit-content-bot {
+  right: 2rem;
+  bottom: 3rem;
+}

@@ -2,7 +2,8 @@
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
   "cli": {
-    "packageManager": "yarn"
+    "packageManager": "yarn",
+    "schematicCollections": ["@angular-eslint/schematics"]
   },
   "newProjectRoot": "projects",
   "projects": {
@@ -10,26 +11,34 @@
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
+          "inlineTemplate": false,
+          "inlineStyle": false,
           "style": "scss",
-          "skipTests": true
+          "skipTests": true,
+          "standalone": true,
+          "changeDetection": "OnPush"
         },
         "@schematics/angular:class": {
           "skipTests": true
         },
         "@schematics/angular:directive": {
-          "skipTests": true
+          "skipTests": true,
+          "standalone": true
         },
         "@schematics/angular:guard": {
-          "skipTests": true
+          "skipTests": true,
+          "functional": true
         },
         "@schematics/angular:interceptor": {
           "skipTests": true
         },
         "@schematics/angular:pipe": {
-          "skipTests": true
+          "skipTests": true,
+          "standalone": true
         },
         "@schematics/angular:resolver": {
-          "skipTests": true
+          "skipTests": true,
+          "functional": true
         },
         "@schematics/angular:service": {
           "skipTests": true
@@ -42,12 +51,11 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
+            "clearScreen": true,
             "outputPath": "dist/home-page2024",
             "index": "src/index.html",
             "browser": "src/main.ts",
-            "polyfills": [
-              "zone.js"
-            ],
+            "polyfills": ["zone.js"],
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
@@ -56,33 +64,47 @@
                 "input": "public"
               }
             ],
-            "styles": [
-              "src/styles.scss"
-            ],
+            "styles": ["src/styles.scss"],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "src/styles",
+                "node_modules/mdb-angular-ui-kit/assets/scss",
+                "node_modules",
+                ""
+              ]
+            },
             "scripts": [],
             "server": "src/main.server.ts",
-            "prerender": true,
+            "prerender": false,
             "ssr": {
               "entry": "server.ts"
             }
           },
           "configurations": {
             "production": {
+              "define": {
+                "PROD_RUN": "true",
+                "SERVER_URL": "'https://www.richardturnmire.com'"
+              },
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kB",
-                  "maximumError": "1MB"
+                  "maximumWarning": "1MB",
+                  "maximumError": "2MB"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "2kB",
-                  "maximumError": "4kB"
+                  "maximumWarning": "480kB",
+                  "maximumError": "800kB"
                 }
               ],
               "outputHashing": "all"
             },
             "development": {
+              "define": {
+                "PROD_RUN": "false",
+                "SERVER_URL": "'http://localhost:7030'"
+              },
               "optimization": false,
               "extractLicenses": false,
               "sourceMap": true
@@ -97,6 +119,7 @@
               "buildTarget": "HomePage2024:build:production"
             },
             "development": {
+              "proxyConfig": "src/proxy.config.js",
               "buildTarget": "HomePage2024:build:development"
             }
           },
@@ -108,10 +131,7 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "polyfills": [
-              "zone.js",
-              "zone.js/testing"
-            ],
+            "polyfills": ["zone.js", "zone.js/testing"],
             "tsConfig": "tsconfig.spec.json",
             "inlineStyleLanguage": "scss",
             "assets": [
@@ -120,10 +140,14 @@
                 "input": "public"
               }
             ],
-            "styles": [
-              "src/styles.scss"
-            ],
+            "styles": ["src/styles.scss"],
             "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": ["src/**/*.ts", "src/**/*.html"]
           }
         }
       }

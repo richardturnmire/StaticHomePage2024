@@ -1,0 +1,29 @@
+.heads {
+  grid-row: 1;
+  grid-column: 3 / -3;
+
+  container: hcontainer / inline-size;
+  min-width: 100cqi;
+  place-items: center;
+}
+
+h2 {
+  width: 50cqi;
+  color: black !important;
+  text-align: center;
+  text-wrap: balance;
+  background-color: transparent;
+
+  // z-index: 1;
+
+  .outer-area {
+    --grid-area-padding: 0;
+    padding: 0;
+    background-color: transparent;
+
+    .inner-area {
+      padding: 0.125em;
+      background-color: var(--my-purple-400);
+    }
+  }
+}
